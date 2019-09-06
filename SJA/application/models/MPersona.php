@@ -20,7 +20,7 @@ class MPersona extends CI_Model
 		$this->db->insert('persona', $datos);
 		return $this->db->insert_id();
 	}
-
+	//Testing gitKraken
 	public function registerUser($param){
 		$datos = array(
 			'USUARIO' => $param['USUARIO'],
