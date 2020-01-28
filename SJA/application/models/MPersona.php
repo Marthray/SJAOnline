@@ -24,7 +24,7 @@ class MPersona extends CI_Model
         $this->db->insert('alumno', $datos);
         return $this->db->insert_id();
     }
-    //Testing gitKraken
+
     public function registerUser($param)
     {
         $datos = array(
@@ -34,5 +34,26 @@ class MPersona extends CI_Model
         );
 
         $this->db->insert('usuario', $datos);
+    }
+
+    public function login($param) {
+        $sql = "SELECT a.nombre, a.apellido FROM usuario u
+                INNER JOIN alumno a on u.fk_alumno = a.ci 
+                WHERE username = ? and password = ?";
+
+        $result = $this->db->query($sql, array($param["USUARIO"], sha1($param["PASSWORD"])));
+
+        if ($result) {
+            foreach ($result->result() as $row)
+            {
+                $nombre = $row->nombre;
+                $apellido = $row->apellido;
+            }
+        }
+
+        $response["nombre"] = $nombre;
+        $response["apellido"] = $apellido;
+
+        return $response;
     }
 }

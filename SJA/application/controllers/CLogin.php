@@ -15,6 +15,10 @@ class CLogin extends CI_Controller
         $this->load->view('vLogin');
     }
 
+    public function openRegister() {
+        $this->load->view('vRegister');
+    }
+
     public function register()
     {
         /**Persona**/
@@ -33,5 +37,14 @@ class CLogin extends CI_Controller
         $paramUser['USUARIO'] = $this->input->post('txtUser');
         $paramUser['PASSWORD'] = $this->input->post('txtPass');
         $this->mpersona->registerUser($paramUser);
+    }
+
+    public function login() {
+        $param['USUARIO'] = $this->input->post('txtUser');
+        $param['PASSWORD'] = $this->input->post('txtPass');
+
+        $data = $this->mpersona->login($param);
+
+        $this->load->view('vWelcome', $data);
     }
 }
