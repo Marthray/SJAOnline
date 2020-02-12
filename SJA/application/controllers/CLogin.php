@@ -40,11 +40,12 @@ class CLogin extends CI_Controller
     }
 
     public function login() {
-        $param['USUARIO'] = $this->input->post('txtUser');
+        /*$param['USUARIO'] = $this->input->post('txtUser');
         $param['PASSWORD'] = $this->input->post('txtPass');
 
-        $data = $this->mpersona->login($param);
+        $data = $this->mpersona->login($param);*/
 
-        $this->load->view('vWelcome', $data);
+        //$this->load->view('vDashboard', $data);
+        $this->load->view('vDashboard');
     }
 }
