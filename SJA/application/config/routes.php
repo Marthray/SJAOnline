@@ -52,3 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'cLogin';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route = array(
+    'default_controller' => 'CLogin/index',
+    'login' => 'CLogin/login',
+);

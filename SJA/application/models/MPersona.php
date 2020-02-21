@@ -43,16 +43,17 @@ class MPersona extends CI_Model
 
         $result = $this->db->query($sql, array($param["USUARIO"], sha1($param["PASSWORD"])));
 
-        if ($result) {
+        if ($result->num_rows() == 1) {
             foreach ($result->result() as $row)
             {
                 $nombre = $row->nombre;
                 $apellido = $row->apellido;
             }
+            $response["nombre"] = $nombre;
+            $response["apellido"] = $apellido;
+        }else{
+            $response = null;
         }
-
-        $response["nombre"] = $nombre;
-        $response["apellido"] = $apellido;
 
         return $response;
     }
