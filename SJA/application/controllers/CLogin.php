@@ -9,8 +9,6 @@ class CLogin extends CI_Controller
     {
         parent::__construct();
         $this->load->model('mpersona');
-        //Se inicializa la libreria de session
-        $this->load->library('session');
     }
 
     public function index()
