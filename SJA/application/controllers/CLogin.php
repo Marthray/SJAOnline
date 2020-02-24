@@ -44,7 +44,7 @@ class CLogin extends CI_Controller
         $param['USUARIO'] = $_POST['user'];
         $param['PASSWORD'] = sha1($_POST['password']);
         $data = $this->mpersona->login($param);
-        if ($data){
+        if ($data != new stdClass()){
             $this->chargeSession($data);
             $this->load->view('vDashboard');
         }else{
