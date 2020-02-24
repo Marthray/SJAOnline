@@ -9,6 +9,8 @@ class CLogin extends CI_Controller
     {
         parent::__construct();
         $this->load->model('mpersona');
+        //Se inicializa la libreria de session
+        $this->load->library('session');
     }
 
     public function index()
@@ -55,9 +57,6 @@ class CLogin extends CI_Controller
     }
 
     private function chargeSession($data) {
-        //Se inicializa la libreria de session
-        $this->load->library('session');
-
         //Se setea todo el objeto de sesion
         $this->session->set_userdata(Constants::SESSION_NAME, $data->nombre);
         $this->session->set_userdata(Constants::SESSION_SURNAME, $data->apellido);

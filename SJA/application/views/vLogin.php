@@ -19,22 +19,22 @@
                             </div>
                             <form class="user" action="login" method="POST">
                             <div class="form-group">
-                                <input type="user" name="user" class="form-control form-control-user" id="exampleInputEmail" placeholder="Nombre de Usuario">
+                                <input type="user" name="user" class="form-control form-control-user" id="user" placeholder="Nombre de Usuario">
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña">
+                                <input type="password" name="password" class="form-control form-control-user" id="password" placeholder="Contraseña">
                             </div>
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox small">
                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                <label class="custom-control-label" for="customCheck">Recuerdame</label>
+                                <label class="custom-control-label" for="customCheck">Recu&eacute;rdame</label>
                                 </div>
                             </div>
                             <input class="btn btn-primary btn-user btn-block" type="Submit" value="Ingresar"></input>
                             <hr>
                             </form>
                             <div class="text-center">
-                            <a class="small" href="forgot-password.html">Olvidó la contraseña?</a>
+                            <a class="small" href="forgot-password.html">Olvid&oacute; la contraseña?</a>
                             </div>
                         </div>
                         </div>

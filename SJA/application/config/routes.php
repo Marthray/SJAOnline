@@ -56,4 +56,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route = array(
     'default_controller' => 'CLogin/index',
     'login' => 'CLogin/login',
+    'dashboard' => 'CDashboard/goToDashboard'
 );
