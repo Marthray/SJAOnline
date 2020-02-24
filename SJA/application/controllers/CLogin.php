@@ -40,17 +40,28 @@ class CLogin extends CI_Controller
     }
 
     public function login() {
-        //$param['USUARIO'] = $this->input->post('txtUser');
-        //$param['PASSWORD'] = $this->input->post('txtPass');
         $param['USUARIO'] = $_POST['user'];
         $param['PASSWORD'] = $_POST['password'];
         $data = $this->mpersona->login($param);
         if ($data){
-            $this->load->view('vDashboard', $data);
+            $this->chargeSession($data);
+            $this->load->view('vDashboard');
         }else{
-            $this->load->view('vLogin');
+            $this->load->view('vLogin', 'Usuario o llave invalida');
         }
 
         //$this->load->view('vDashboard');
+    }
+
+    private function chargeSession($data) {
+        //Se inicializa la libreria de session
+        $this->load->library('session');
+
+        //Se setea todo el objeto de sesion
+        $this->session->set_userdata(constants::SESSION_NAME, $data->nombre);
+        $this->session->set_userdata(constants::SESSION_SURNAME, $data->apellido);
+        $this->session->set_userdata(constants::SESSION_USER, $data->usuario);
+        $this->session->set_userdata(constants::SESSION_EMAIL, $data->email);
+        $this->session->set_userdata(constants::SESSION_PID, $data->cedula);
     }
 }

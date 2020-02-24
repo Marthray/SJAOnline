@@ -37,9 +37,12 @@ class MPersona extends CI_Model
     }
 
     public function login($param) {
-        $sql = "SELECT a.nombre, a.apellido FROM usuario u
-                INNER JOIN alumno a on u.fk_alumno = a.ci 
+        $sql = "SELECT u.username, p.nombre, p.apellido, p.ci, c.direccion FROM usuario u
+                INNER JOIN personal p on u.fk_personal = p.ci 
+                INNER JOIN correo c on c.fk_personal
                 WHERE username = ? and password = ?";
+        
+        $passCiphered = sha1($param["PASSWORD"]);
 
         $result = $this->db->query($sql, array($param["USUARIO"], sha1($param["PASSWORD"])));
 
@@ -48,9 +51,15 @@ class MPersona extends CI_Model
             {
                 $nombre = $row->nombre;
                 $apellido = $row->apellido;
+                $user = $row->username;
+                $email = $row->email;
+                $ci = $row->ci;
             }
             $response["nombre"] = $nombre;
             $response["apellido"] = $apellido;
+            $response["usuario"] = $user;
+            $response["email"] = $email;
+            $response["cedula"] = $ci;
         }else{
             $response = null;
         }
