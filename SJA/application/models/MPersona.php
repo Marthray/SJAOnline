@@ -39,12 +39,10 @@ class MPersona extends CI_Model
     public function login($param) {
         $sql = "SELECT u.username, p.nombre, p.apellido, p.ci, c.direccion FROM usuario u
                 INNER JOIN personal p on u.fk_personal = p.ci 
-                INNER JOIN correo c on c.fk_personal
+                LEFT JOIN correo c on c.fk_personal = p.ci
                 WHERE username = ? and password = ?";
-        
-        $passCiphered = sha1($param["PASSWORD"]);
 
-        $result = $this->db->query($sql, array($param["USUARIO"], sha1($param["PASSWORD"])));
+        $result = $this->db->query($sql, array($param["USUARIO"], $param["PASSWORD"]));
 
         if ($result->num_rows() == 1) {
             foreach ($result->result() as $row)
@@ -52,8 +50,12 @@ class MPersona extends CI_Model
                 $nombre = $row->nombre;
                 $apellido = $row->apellido;
                 $user = $row->username;
-                $email = $row->email;
                 $ci = $row->ci;
+                if (!empty($row->email)) { 
+                    $email = $row->email;
+                } else {
+                    $email = '';
+                }
             }
             $response["nombre"] = $nombre;
             $response["apellido"] = $apellido;
@@ -64,6 +66,6 @@ class MPersona extends CI_Model
             $response = null;
         }
 
-        return $response;
+        return (object) $response;
     }
 }

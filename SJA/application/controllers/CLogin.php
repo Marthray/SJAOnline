@@ -4,6 +4,7 @@
  */
 class CLogin extends CI_Controller
 {
+
     public function __construct()
     {
         parent::__construct();
@@ -58,10 +59,11 @@ class CLogin extends CI_Controller
         $this->load->library('session');
 
         //Se setea todo el objeto de sesion
-        $this->session->set_userdata(constants::SESSION_NAME, $data->nombre);
-        $this->session->set_userdata(constants::SESSION_SURNAME, $data->apellido);
-        $this->session->set_userdata(constants::SESSION_USER, $data->usuario);
-        $this->session->set_userdata(constants::SESSION_EMAIL, $data->email);
-        $this->session->set_userdata(constants::SESSION_PID, $data->cedula);
+        $this->session->set_userdata(Constants::SESSION_NAME, $data->nombre);
+        $this->session->set_userdata(Constants::SESSION_SURNAME, $data->apellido);
+        $this->session->set_userdata(Constants::SESSION_USER, $data->usuario);
+        $this->session->set_userdata(Constants::SESSION_EMAIL, $data->email);
+        $this->session->set_userdata(Constants::SESSION_PID, $data->cedula);
+        $this->session->set_userdata(Constants::SESSION_LOGGED_IN, true);
     }
 }
