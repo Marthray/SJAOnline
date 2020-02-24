@@ -41,7 +41,7 @@ class CLogin extends CI_Controller
 
     public function login() {
         $param['USUARIO'] = $_POST['user'];
-        $param['PASSWORD'] = $_POST['password'];
+        $param['PASSWORD'] = sha1($_POST['password']);
         $data = $this->mpersona->login($param);
         if ($data){
             $this->chargeSession($data);
