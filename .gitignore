@@ -1,3 +1,6 @@
 SJA/.vscode/launch.json
 SJA/application/config/config.php
 ws.code-workspace
+
+.fake
+.ionide

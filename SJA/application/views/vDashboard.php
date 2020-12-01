@@ -22,8 +22,13 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Bienvenido/a, <?php echo $this->session->userdata(Constants::SESSION_NAME) ?></h1>
+          <h1 class="h3 mb-4 text-gray-800">Hola, <?php echo $this->session->userdata(Constants::SESSION_NAME) ?>
+            <?php echo $this->session->userdata(Constants::SESSION_SURNAME) ?>
+          </h1>
 
+          <div class="container-fluid" style="display:flex; justify-content:center; align-items:center; height:300px;">
+            <img src="<?php echo base_url('assets/images/logo_sja.jpg'); ?>" style="width: 15%;" class="center"/>
+          </div>
         </div>
         <!-- /.container-fluid -->
 
